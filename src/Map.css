@@ -15,8 +15,12 @@
     border-radius : 12px;
     
 }
+.info-cnt {
+    background : #1f2833 !important; 
+}
 .info-container {
     width : 150px;
+    
 }
 
 .info-flag {

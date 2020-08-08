@@ -122,18 +122,36 @@ h1{
 
 /* Responsive */
 
-@media (min-width : 990px){
+@media (max-width : 992px){
   .app{
     flex-direction: column;
+  }
+  .app_right {
+    border-right: 2px solid #66fcf1;
+    border-top : 2px solid #66fcf1;
   }
 }
 
 
-@media only screen and (max-width: 600px) {
+@media (max-width: 600px) {
   .app {
     flex-direction : column;
   }
   .app__heading h1{
     font-size: 20px;
+  }
+  .app_stats {
+    flex-direction: column;
+    justify-content: space-evenly;
+    
+  }
+  .app__heading {
+    flex-direction: column;
+  }
+  .app_left {
+    flex : 0.6;
+  }
+  .app {
+    padding : 10px !important;
   }
 }
