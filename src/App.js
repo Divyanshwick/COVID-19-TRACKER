@@ -82,13 +82,16 @@ console.log(countryInfo);
     <div className="app">
       <div className="app_left">
         <div className="app_header">
-          <h1>COVID-19 Stats</h1>
+          <div className="app__heading">
+            <img src="https://ak.picdn.net/shutterstock/videos/8145814/thumb/1.jpg" alt="World Logo"></img> 
+            &nbsp;&nbsp;&nbsp;<h1>COVID-19 TRACKER</h1>
+          </div>
             <FormControl className="app__dropdown">
-              <Select variant="outlined" onChange={onCountryChange} value={country}>
-                <MenuItem value="worldwide">WorldWide</MenuItem>
+              <Select className="app__select" variant="outlined" onChange={onCountryChange} value={country}>
+                <MenuItem className="app__menuItem" value="worldwide">WorldWide</MenuItem>
                 
                 {countries.map((country) =>(
-                  <MenuItem value={country.value}>{country.name}</MenuItem>
+                  <MenuItem className="app__menuItem" value={country.value}>{country.name}</MenuItem>
                 ))}
               </Select>
             </FormControl>
@@ -106,7 +109,7 @@ console.log(countryInfo);
         <Card className="app_right">
           <CardContent>
             <div className="app_information">
-              <h3>Live cases by country</h3>
+              <h3 className="app_graphTitle">Total Cases For All Countries</h3>
               <Table countries={tableData} />
 
                 <h3 className="app_graphTitle">WorldWide new {casesType}</h3>  

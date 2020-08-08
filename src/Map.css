@@ -1,15 +1,19 @@
 .map{
     height : 500px;
     background-color: white;
-    padding : 1rem;
+    /* padding : 1rem; */
     border-radius : 20px;
     margin-top: 16px;
-    box-shadow: 0 0 8px -4px rgba(0,0,0,0,5);
+    /* box-shadow: 0 0 8px -4px rgba(0,0,0,0,5); */
+    border: 10px solid #66fcf1;
+    
+    /* border-left: 5px solid #66fcf1; */
+    
 }
 .map .leaflet-container{
     height : 100%;
     border-radius : 12px;
-
+    
 }
 .info-container {
     width : 150px;

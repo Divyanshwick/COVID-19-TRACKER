@@ -109,6 +109,7 @@ function LineGraph({casesType, ...props}) {
                          {
                          backgroundColor : "rgba(204,16,52,0.5)",
                          borderColor : "#cc1034",
+                         
                          data : data,
                      },
                     ],
