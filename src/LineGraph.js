@@ -1,11 +1,22 @@
-import React,{useState,useEffect} from 'react'
-import { Line } from 'react-chartjs-2';
+import React,{useState,useEffect} from 'react';
+
+import { Chart,Line } from 'react-chartjs-2';
 import numeral from "numeral";
 
-
+Chart.defaults.global.defaultFontColor = "#66fcf1";
+// Chart.defaults.global.point.radius = 3;
 const options = {
     legend : {
         display : false
+       
+    },
+    layout : {
+        padding : {
+            top : 10,
+            right : 0,
+            left : 0,
+            bottom : 0
+        },
     },
     elements : {
         point : {
@@ -113,6 +124,7 @@ function LineGraph({casesType, ...props}) {
                          data : data,
                      },
                     ],
+                   
                  }}
                  options={options}
                  
