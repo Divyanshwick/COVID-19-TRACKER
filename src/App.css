@@ -113,12 +113,21 @@ h1{
   border : 1px solid #6cfcf1 !important;
   
 }
+.app__mainRow {
+  background : #0b0c10 !important;
+}
 .app_pieGraph {
   display: flex;
   flex-direction: row;
   width : 100%;
   justify-content: center;
   align-items: center;
+  background : #0b0c10;
+  border:5px solid #6cfcf1 ;
+  padding-top : 30px;
+  padding-bottom: 30px;
+  
+
 }
 
 
