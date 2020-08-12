@@ -115,19 +115,26 @@ h1{
 }
 .app__mainRow {
   background : #0b0c10 !important;
+  margin-left : 30px;
+  margin-right: 35px; 
 }
 .app_pieGraph {
   display: flex;
   flex-direction: row;
   width : 100%;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   background : #0b0c10;
   border:5px solid #6cfcf1 ;
+  border-radius: 12px;
   padding-top : 30px;
   padding-bottom: 30px;
   
 
+}
+.app-pie {
+  border-left : 2px solid #66fcf1 !important;
+  border-bottom : 2px solid #66fcf1 !important;
 }
 
 

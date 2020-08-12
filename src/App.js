@@ -10,7 +10,8 @@ import Table from './Table';
 
 import {sortData} from './util';
 import LineGraph from './LineGraph';
-import PieGraph from './PieGraph';
+import {PieGraph, PieGraphToday,PieGraphCustom} from './PieGraph';
+
 import "leaflet/dist/leaflet.css";
 import {prettyPrintStat} from './util';
 import './App.css';
@@ -22,10 +23,11 @@ function App() {
   const [casesType,setCasesType] = useState("cases");
   const [tableData,setTableData] = useState([]);
   const [mapCenter,setMapCenter] = useState({lat: 34.80746,lng: -40.4796});
+  const [countrySelected,setCountrySelected] = useState({});
   const [mapZoom,setMapZoom] = useState(3);
   const [mapCountries,setMapCountries] = useState([]);
   const [pieData,setPieData] = useState({});
-  
+
   // const [worldData,setWorldData] = useState({});
   useEffect(() => {
     fetch("https://disease.sh/v3/covid-19/all")
@@ -79,6 +81,8 @@ function App() {
     setCountry(countryCode);
     setCountryInfo(data);
     setMapCenter([data.countryInfo.lat, data.countryInfo.long]);
+   
+    setCountrySelected(data);
     setMapZoom(4);
   });
 
@@ -132,9 +136,9 @@ console.log(countryInfo);
         <Card className="app__mainRow">
           <CardContent>
             <div className="app_pieGraph">
-              <PieGraph data={pieData}/>
-              <PieGraph data={pieData}/>
-              <PieGraph data={pieData}/>
+              <PieGraph className="app-pie" data={pieData}/>
+              <PieGraphCustom className="app-pie" data={countrySelected}/>
+              <PieGraphToday className="app-pie" data={pieData}/>
             </div>
           </CardContent>
         </Card>
