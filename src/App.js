@@ -10,7 +10,7 @@ import Table from './Table';
 
 import {sortData} from './util';
 import LineGraph from './LineGraph';
-import {PieGraph, PieGraphToday,PieGraphCustom} from './PieGraph';
+import {PieGraph, PieGraphToday,PieGraphCustom,PieGraphTotal} from './PieGraph';
 
 import "leaflet/dist/leaflet.css";
 import {prettyPrintStat} from './util';
@@ -27,7 +27,7 @@ function App() {
   const [mapZoom,setMapZoom] = useState(3);
   const [mapCountries,setMapCountries] = useState([]);
   const [pieData,setPieData] = useState({});
-
+  let [countryList,setCountryList] = useState([]);
   // const [worldData,setWorldData] = useState({});
   useEffect(() => {
     fetch("https://disease.sh/v3/covid-19/all")
@@ -90,6 +90,25 @@ function App() {
   
 }
 console.log(countryInfo);
+let cList = [];
+useEffect(() =>{
+  const fetchCountryData = async() => {
+      await fetch('https://disease.sh/v3/covid-19/countries')
+      .then((response) => response.json())
+      .then((data) => {
+           data.map((country) => (
+              fetch(`https://disease.sh/v3/covid-19/countries/${country.countryInfo.iso2}`)
+              .then((response) => response.json())
+              .then((data)=>{
+                  cList.push(data.cases);
+              })
+          ));
+          setCountryList(cList);
+           console.log(cList);
+      })
+  }
+  fetchCountryData();
+},[])
   return (
     <div>
       <div className="app">
@@ -141,7 +160,13 @@ console.log(countryInfo);
               <PieGraphToday className="app-pie" data={pieData}/>
             </div>
           </CardContent>
-        </Card>
+          <CardContent>
+            <div className="app_pieGraph">
+              <PieGraphTotal className="app-pie" data={countryList} />
+            </div>
+          </CardContent>
+        
+      </Card>
       </div>
     </div>
   );

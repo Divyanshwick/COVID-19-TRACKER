@@ -1,5 +1,6 @@
 import React from 'react';
 import numeral from 'numeral';
+import colors from './colors';
 import Pie from 'react-chartjs-2';
 
 
@@ -149,7 +150,9 @@ import Pie from 'react-chartjs-2';
         countryData.push(data.recovered);
         countryData.push(data.deaths);
         return(
+            
             <div>
+            
             <Pie
              data={{
                  labels : ["Total-Cases","Total-Recovered","Total-Deaths"],
@@ -168,10 +171,38 @@ import Pie from 'react-chartjs-2';
                     fontSize : 20
                 },options}}
              />
+             
         </div>
+        );
+    }
+    
+    function PieGraphTotal({data}) {
+        let countryCases = [];
+        countryCases.push(data);
+        console.log(countryCases);
+
+        return(
+            <div>
+                 <Pie
+             data={{
+                    datasets : [{
+                    backgroundColor : colors,
+                    data : countryCases,
+                    borderWidth : 1.5,
+                    borderColor : "#66fcf1"
+                 }]
+             }}
+             options={{ 
+                title: {
+                    display: true,
+                    text: "Stats-Total",
+                    fontSize : 20
+                },options}}
+             />
+            </div>
         );
     }
 
 
 
-export {PieGraph,PieGraphToday,PieGraphCustom};
+export {PieGraph,PieGraphToday,PieGraphCustom,PieGraphTotal};
