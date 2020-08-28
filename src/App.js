@@ -165,18 +165,19 @@ useEffect(() => {
             
             <Map countries={mapCountries} casesType={casesType} center={mapCenter} zoom={mapZoom} />
           </div>
-          <Card className="app_right">
-            <CardContent>
-              <div className="app_information">
-                <h3 className="app_graphTitle">Total Cases For All Countries</h3>
-                <Table countries={tableData} />
+          <div id="app_rt">
+            <Card className="app_right">
+              <CardContent>
+                <div className="app_information">
+                  <h3 className="app_graphTitle">Total Cases For All Countries</h3>
+                  <Table countries={tableData} />
 
-                  <h3 className="app_graphTitle">WorldWide new {casesType}</h3>  
-                <LineGraph className="app_graph" casesType={casesType} />
-              </div>
-            </CardContent>          
-          </Card>
-      
+                    <h3 className="app_graphTitle">WorldWide new {casesType}</h3>  
+                  <LineGraph className="app_graph" casesType={casesType} />
+                </div>
+              </CardContent>          
+            </Card>
+          </div>
       </div>
       <div className="app__main">
         <Card className="app__mainRow">

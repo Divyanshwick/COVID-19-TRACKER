@@ -44,6 +44,7 @@ h1{
 .app_left{
   flex : 0.9;
 }
+
 .app_right {
   display : flex;
   flex-direction : column;
@@ -163,9 +164,18 @@ h1{
   .app{
     flex-direction: column;
   }
+  #app_rt {
+    margin-top : 20px;
+  }
   .app_right {
     border-right: 2px solid #66fcf1;
     border-top : 2px solid #66fcf1;
+  }
+  .app_pieGraph {
+    flex-direction: column;
+  }
+  .app_main {
+    width : 100%;
   }
 }
 

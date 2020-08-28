@@ -57,3 +57,17 @@ p {
     margin : 2px;
     padding-bottom : 10px;
 }
+
+@media (max-width : 784px) {
+    .headline {
+        flex-direction : column;
+    }
+    .NewsImgBox {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .NewsImgBox img {
+        width : 100%;
+    }
+}
