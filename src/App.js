@@ -7,7 +7,7 @@ import {
 import InfoBox from './InfoBox';
 import Map from './Map'
 import Table from './Table';
-
+import Headlines from './News';
 import {sortData} from './util';
 import LineGraph from './LineGraph';
 import {PieGraph, PieGraphToday,PieGraphCustom,PieGraphTotal} from './PieGraph';
@@ -28,6 +28,7 @@ function App() {
   const [mapCountries,setMapCountries] = useState([]);
   const [pieData,setPieData] = useState({});
   let [countryList,setCountryList] = useState([]);
+  const [news,setNews] = useState([]);
   // const [worldData,setWorldData] = useState({});
   useEffect(() => {
     fetch("https://disease.sh/v3/covid-19/all")
@@ -100,7 +101,9 @@ useEffect(() =>{
               fetch(`https://disease.sh/v3/covid-19/countries/${country.countryInfo.iso2}`)
               .then((response) => response.json())
               .then((data)=>{
+                if(data.cases !== undefined){
                   cList.push(data.cases);
+                }
               })
           ));
           setCountryList(cList);
@@ -108,7 +111,31 @@ useEffect(() =>{
       })
   }
   fetchCountryData();
+},[]);
+
+useEffect(() => {
+  const fetchNews = async() => {
+    await fetch('http://newsapi.org/v2/top-headlines?q=covid%2019&language=en&from=2020-07-28&sortBy=publishedAt&apiKey=e381b57057874cb7aaf702ebde73cb3d')
+    .then(response => response.json())
+    .then(data => {
+      const news = data.articles.map((article) => (
+        {
+          Author : article.author,
+          Title : article.title,
+          Content : article.content,
+          ImageUrl : article.urlToImage,
+          ReadMore : article.url
+        }
+      )) 
+      
+      setNews(news);
+      // console.log(news);
+    })
+    
+  }
+  fetchNews();
 },[])
+
   return (
     <div>
       <div className="app">
@@ -161,8 +188,8 @@ useEffect(() =>{
             </div>
           </CardContent>
           <CardContent>
-            <div className="app_pieGraph">
-              <PieGraphTotal className="app-pie" data={countryList} />
+            <div className="app_News">
+              <Headlines className="news" news={news}/>
             </div>
           </CardContent>
         

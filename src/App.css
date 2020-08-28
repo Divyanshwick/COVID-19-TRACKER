@@ -132,6 +132,20 @@ h1{
   
 
 }
+.app_News {
+  display: flex;
+  flex-direction: row;
+  width : 100%;
+  justify-content: space-between;
+  align-items: center;
+  background : #0b0c10;
+  border:5px solid #6cfcf1 ;
+  border-radius: 12px;
+  padding-top : 30px;
+  padding-bottom: 30px;
+
+ 
+}
 .app-pie {
   border-left : 2px solid #66fcf1 !important;
   border-bottom : 2px solid #66fcf1 !important;
