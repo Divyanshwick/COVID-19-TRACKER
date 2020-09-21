@@ -1,4 +1,6 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Live demo : 
+https://covid-19-stats-8d305.web.app/
 
 ## Available Scripts
 
