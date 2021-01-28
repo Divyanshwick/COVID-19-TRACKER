@@ -7,7 +7,7 @@ import {
 import InfoBox from './InfoBox';
 import Map from './Map'
 import Table from './Table';
-import Headlines from './News';
+import Headlines from './Headlines';
 import {sortData} from './util';
 import LineGraph from './LineGraph';
 import {PieGraph, PieGraphToday,PieGraphCustom,PieGraphTotal} from './PieGraph';
@@ -115,7 +115,7 @@ useEffect(() =>{
 
 useEffect(() => {
   const fetchNews = async() => {
-    await fetch('http://newsapi.org/v2/top-headlines?q=covid%2019&language=en&from=2020-07-28&sortBy=publishedAt&apiKey=e381b57057874cb7aaf702ebde73cb3d')
+    await fetch('https://newsapi.org/v2/top-headlines?q=covid%2019&language=en&from=2021-01-01&sortBy=publishedAt&apiKey=e381b57057874cb7aaf702ebde73cb3d')
     .then(response => response.json())
     .then(data => {
       const news = data.articles.map((article) => (
@@ -157,9 +157,9 @@ useEffect(() => {
             </div>
             
             <div className="app_stats">
-              <InfoBox isRed active={casesType === "cases"}  onClick={e => setCasesType("cases")} title="Coronavirus Cases" cases={prettyPrintStat(countryInfo.todayCases)} total={prettyPrintStat(countryInfo.cases)}/>
-              <InfoBox active={casesType === "recovered"} onClick={e => setCasesType("recovered")} title="Recovered" cases={prettyPrintStat(countryInfo.todayRecovered)} total={prettyPrintStat(countryInfo.recovered)}/>
-              <InfoBox isRed active={casesType === "deaths"} onClick={e => setCasesType("deaths")} title="Deaths" cases={prettyPrintStat(countryInfo.todayDeaths)} total={prettyPrintStat(countryInfo.deaths)}/>
+              <InfoBox className="app-info" isRed active={casesType === "cases"}  onClick={e => setCasesType("cases")} title="Coronavirus Cases" cases={prettyPrintStat(countryInfo.todayCases)} total={prettyPrintStat(countryInfo.cases)}/>
+              <InfoBox className="app-info" active={casesType === "recovered"} onClick={e => setCasesType("recovered")} title="Recovered" cases={prettyPrintStat(countryInfo.todayRecovered)} total={prettyPrintStat(countryInfo.recovered)}/>
+              <InfoBox className="app-info" isRed active={casesType === "deaths"} onClick={e => setCasesType("deaths")} title="Deaths" cases={prettyPrintStat(countryInfo.todayDeaths)} total={prettyPrintStat(countryInfo.deaths)}/>
             </div>
                     
             
